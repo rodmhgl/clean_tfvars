@@ -35,17 +35,17 @@ To build the program, follow these steps:
 2. Clone the repository:
 
     ```bash
-    git clone https://github.com/yourusername/terraform-tfvars-cleaner.git
-    cd terraform-tfvars-cleaner
+    git clone https://github.com/rodmhgl/clean_tfvars
+    cd clean_tfvars
     ```
 
 3. Build the program using the Go compiler:
 
     ```bash
-    go build -o clean_tfvars main.go hclparser.go tfvarsparser.go utils.go
+    go build
     ```
 
-    This will generate an executable file named `clean_tfvars`.
+    This will generate an executable file named `terraform-cleanup`.
 
 ---
 
@@ -54,7 +54,7 @@ To build the program, follow these steps:
 Once the program is built, you can run it using the following command:
 
 ```bash
-./clean_tfvars -tf <path-to-tf-directory> -tfvars <path-to-tfvars-file>
+./terraform-cleanup -tf <path-to-tf-directory> -tfvars <path-to-tfvars-file>
 ```
 
 ## Command-Line Arguments
@@ -66,7 +66,7 @@ The program accepts the following command-line arguments:
 - **Description**: Specifies the path to the directory containing the Terraform configuration files (`*.tf`). The directory will be scanned for `.tf` files that declare variables.
 - **Example**:
     ```bash
-    ./clean_tfvars -tf ./terraform-config/
+    ./terraform-cleanup -tf ./terraform-config/
     ```
 
 ### `-tfvars <path>`
@@ -74,7 +74,7 @@ The program accepts the following command-line arguments:
 - **Description**: Specifies the path to the `.tfvars` file that contains the variables and their values. This file will be compared against the declared variables in the `.tf` files.
 - **Example**:
     ```bash
-    ./clean_tfvars -tfvars ./terraform-config/variables.tfvars
+    ./terraform-cleanup -tfvars ./terraform-config/variables.tfvars
     ```
 
 ### `-dry-run`
@@ -82,7 +82,7 @@ The program accepts the following command-line arguments:
 - **Description**: When this flag is set, the program will not modify the `.tfvars` file. Instead, it will print out the variables that would be removed, allowing you to preview the changes.
 - **Example**:
     ```bash
-    ./clean_tfvars -tf ./terraform-config/ -tfvars ./terraform-config/variables.tfvars -dry-run
+    ./terraform-cleanup -tf ./terraform-config/ -tfvars ./terraform-config/variables.tfvars -dry-run
     ```
 
 ### `-v`
@@ -90,7 +90,7 @@ The program accepts the following command-line arguments:
 - **Description**: Enables verbose logging. Provides detailed output during the parsing and comparison process, including the declared and unused variables.
 - **Example**:
     ```bash
-    ./clean_tfvars -tf ./terraform-config/ -tfvars ./terraform-config/variables.tfvars -v
+    ./terraform-cleanup -tf ./terraform-config/ -tfvars ./terraform-config/variables.tfvars -v
     ```
 
 ---
@@ -98,4 +98,4 @@ The program accepts the following command-line arguments:
 ### Example Usage
 
 ```bash
-./clean_tfvars -tf ./terraform-config/ -tfvars ./terraform-config/variables.tfvars
+
