@@ -92,10 +92,3 @@ The program accepts the following command-line arguments:
     ```bash
     ./terraform-cleanup -tf ./terraform-config/ -tfvars ./terraform-config/variables.tfvars -v
     ```
-
----
-
-### Example Usage
-
-```bash
-
